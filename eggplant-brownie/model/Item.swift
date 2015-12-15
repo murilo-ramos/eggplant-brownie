@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Item: NSObject, Equatable, NSCoding {
+class Item: NSObject, NSCoding {
     
     let name: String
     let calories: Double
@@ -18,7 +18,7 @@ class Item: NSObject, Equatable, NSCoding {
         self.calories = calories
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObjectForKey("name") as! String
         self.calories = aDecoder.decodeDoubleForKey("calories");
     }

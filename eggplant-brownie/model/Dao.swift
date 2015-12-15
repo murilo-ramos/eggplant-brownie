@@ -19,7 +19,7 @@ class Dao {
         let directories = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,
             NSSearchPathDomainMask.UserDomainMask,
             true)
-        let path = directories[0] as! String
+        let path = directories[0] 
         itemsArchive = path + "/" + itemsFileName
         mealsArchive = path + "/" + mealsFileName
     }

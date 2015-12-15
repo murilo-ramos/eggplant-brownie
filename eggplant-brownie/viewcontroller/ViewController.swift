@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             selectedItems.append(items[indexPath.row])
         } else {
             cell!.accessoryType = UITableViewCellAccessoryType.None
-            if var itemIndex = find(selectedItems, items[indexPath.row]) {
+            if let itemIndex = selectedItems.indexOf(items[indexPath.row]) {
                 selectedItems.removeAtIndex(itemIndex)
             }
         }
@@ -69,7 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 if let navigationController = self.navigationController {
                     navigationController.popViewControllerAnimated(true)
                 } else {
-                    Alert(controller: self).show(message: "Unexpected error, but meal added")
+                    Alert(controller: self).show("Unexpected error, but meal added")
                 }
                 return
             }
@@ -86,25 +86,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return nil
         }
         
-        var name = nameField!.text
-        var happiness = happinessField!.text.toInt()
+        let name = nameField!.text!
+        let happiness = Int(happinessField!.text!)
         
         if (happiness == nil) {
             return nil
         }
         
-        var meal = Meal(name: name, happiness: happiness!)
+        let meal = Meal(name: name, happiness: happiness!)
         meal.items = selectedItems
         
-        println("eaten: \(meal.name), \(meal.happiness)")
+        print("eaten: \(meal.name), \(meal.happiness)")
         for item in meal.items {
-            println("item: \(item.name), \(item.calories)")
+            print("item: \(item.name), \(item.calories)")
         }
         return meal
     }
     
     func addNewItem() {
-        var newItemViewController = NewItemViewController(delegate: self)
+        let newItemViewController = NewItemViewController(delegate: self)
         if let navigationController = self.navigationController {
             navigationController.pushViewController(newItemViewController, animated: true);
         } else {
@@ -118,9 +118,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let table = tableView {
             table.reloadData()
         } else {
-            Alert(controller: self).show(message: "Not expected error, but item added.")
+            Alert(controller: self).show("Not expected error, but item added.")
         }
-        println ("count \(items.count)")
+        print ("count \(items.count)")
     }
 }
 

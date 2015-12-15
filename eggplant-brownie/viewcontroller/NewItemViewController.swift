@@ -19,7 +19,7 @@ class NewItemViewController: UIViewController {
         self.delegate = delegate
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -33,12 +33,12 @@ class NewItemViewController: UIViewController {
             return
         }
         
-        var itemName = itemNameField!.text
-        var calories = (caloriesField!.text as NSString).doubleValue
+        let itemName = itemNameField!.text!
+        let calories = (caloriesField!.text! as NSString).doubleValue
         
         let item = Item(name: itemName, calories: calories)
         
-        println("item \(item.name), \(item.calories)")
+        print("item \(item.name), \(item.calories)")
         
         if let delegate = self.delegate {
             delegate.addItem(item)

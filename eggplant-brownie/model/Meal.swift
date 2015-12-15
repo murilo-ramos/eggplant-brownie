@@ -20,7 +20,7 @@ class Meal : NSObject, NSCoding {
         self.happiness = happiness
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObjectForKey("name") as! String
         self.happiness = aDecoder.decodeIntegerForKey("happiness")
         self.items = aDecoder.decodeObjectForKey("items") as! Array<Item>

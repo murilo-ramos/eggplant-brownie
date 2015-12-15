@@ -39,7 +39,7 @@ class MealsTableViewController: UITableViewController, AddMealDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var meal = meals[indexPath.row]
+        let meal = meals[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         cell.textLabel!.text = meal.name
         let longPress = UILongPressGestureRecognizer(target: self, action: Selector("showMealDetail:"))
